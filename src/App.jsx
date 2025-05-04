@@ -1,10 +1,24 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+// Import React
+import React from "react";
+
+// Import Layouts
+import DefaultLayout from "./layouts/DefaultLayout";
+
+// Import Pages
+import HomePage from "./pages/HomePage";
+import ProjectPage from "./pages/ProjectPage";
+
 export default function App() {
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold underline text-center">Hello world!</h1>
-      <p className="text-lg text-gray-700">
-        This is a simple example of using Tailwind CSS with Vite and React.
-      </p>
-    </div>
+    <Router>
+      <Routes>
+        <Route Component={DefaultLayout}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects/:id" element={<ProjectPage />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
